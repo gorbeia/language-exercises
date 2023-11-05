@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Exercise from "./Exercise";
+import Exercise from "../exercise/Exercise";
 import { Box, Button, Meter } from "grommet";
 import { LessonData } from "./LessonChooser";
 import LessonCloseScreen from "./LessonCloseScreen";

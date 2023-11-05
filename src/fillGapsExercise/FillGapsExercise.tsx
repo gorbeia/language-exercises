@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FillGapsOptions from "./FillGapsOptions";
 import Phrase from "./Phrase";
-import { NestedExerciseProps, ExerciseProps } from "../question/Exercise";
+import { NestedExerciseProps, ExerciseProps } from "../exercise/Exercise";
 import { Box } from "grommet";
 import { useTranslation } from "react-i18next";
 
