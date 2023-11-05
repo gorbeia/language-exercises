@@ -6,7 +6,7 @@ function FillGapsOptions(options: FillGapsData) {
   return (
     <>
       {options.options.map((o) => (
-        <FillGapsOption option={o} optionSelected={() => onClick(o)} />
+        <FillGapsOption key={o} option={o} optionSelected={() => onClick(o)} />
       ))}
     </>
   );

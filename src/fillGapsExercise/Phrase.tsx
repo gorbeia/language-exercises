@@ -10,6 +10,7 @@ function Phrase(props: PhraseProps) {
         } else {
           return (
             <Gap
+              key={segment.answer}
               option={props.selectedOptions[0]}
               optionClicked={props.optionClicked}
             ></Gap>
