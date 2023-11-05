@@ -1,8 +1,8 @@
 import { Box, Grommet } from 'grommet'
 import { grommet } from "grommet";
 import './App.css'
-import Practice from './question/Practice'
-import LessonChooser, { LessonData } from './question/LessonChooser';
+import Practice from './lesson/Lesson'
+import LessonChooser, { LessonData } from './lesson/LessonChooser';
 import { useState } from 'react';
 
 function App() {
