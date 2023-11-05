@@ -9,22 +9,29 @@ function LessonChooser(props: LessonChooserProps) {
   const [lessons, setLessons] = useState<LessonData[]>([]);
   useEffect(() => {
     const loadedLessons: LessonData[] = [];
+    const promises = [];
     for (const path in data) {
-      data[path]().then((mod) => {
-        loadedLessons.push(mod as LessonData);
-        setLessons(loadedLessons);
-      })
+      promises.push(data[path]());
     }
+    Promise.allSettled(promises).then((results) => {
+      for (const result of results) {
+        if (isFulfilled(result)) loadedLessons.push(result.value as LessonData);
+      }
+      setLessons(loadedLessons);
+    });
   }, []);
+  function isFulfilled<T>(
+    val: PromiseSettledResult<T>
+  ): val is PromiseFulfilledResult<T> {
+    return val.status === "fulfilled";
+  }
   return (
     <>
-      <h1>
-        {t("Choose a lesson")}
-      </h1>
-      {lessons.map((i, j) => {
+      <h1>{t("Choose a lesson")}</h1>
+      {lessons.map((i) => {
         return (
           <Button
-            key={j}
+            key={i.name}
             label={i.name}
             onClick={() => props.onChoose(i)}
             margin="small"
