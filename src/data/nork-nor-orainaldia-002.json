@@ -1,35 +1,6 @@
 {
+    "name": "Nork nor orainaldia 2",
     "exercises": [
-        {
-            "type": "fillGaps",
-            "phrase": "Nik txakur bat ikusi {dut}",
-            "options": [
-                "ditut",
-                "diot",
-                "naiz",
-                "dut"
-            ]
-        },
-        {
-            "type": "fillGaps",
-            "phrase": "{Nik} txakur bat ikusi dut",
-            "options": [
-                "Ni",
-                "Zuk",
-                "Txakurrak",
-                "Nik"
-            ]
-        },
-        {
-            "type": "fillGaps",
-            "phrase": "Nik sagarrak jan {ditut}",
-            "options": [
-                "ditut",
-                "diot",
-                "naiz",
-                "dut"
-            ]
-        },
         {
             "type": "fillGaps",
             "phrase": "Nik zu gaur euskaltegian ikusi {zaitut}",
