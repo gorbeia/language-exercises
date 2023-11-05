@@ -33,12 +33,62 @@
         },
         {
             "type": "fillGaps",
-            "phrase": "Nik zu gaur euskaltegian ikusi {zaitut}",
+            "phrase": "Satorrek zuloak egin {dituzte}",
             "options": [
-                "dizut",
-                "zaitut",
-                "nauzu",
-                "dut"
+                "du",
+                "ditu",
+                "dute",
+                "dituzte"
+            ]
+        },
+        {
+            "type": "fillGaps",
+            "phrase": "Behiek esnea ematen {dute}",
+            "options": [
+                "du",
+                "ditu",
+                "dute",
+                "dituzte"
+            ]
+        },
+        {
+            "type": "fillGaps",
+            "phrase": "Zuek sagar bat jan {duzue}",
+            "options": [
+                "duzue",
+                "duzu",
+                "dute",
+                "dituzue"
+            ]
+        },
+        {
+            "type": "fillGaps",
+            "phrase": "{Zuk} horma margoztu duzu",
+            "options": [
+                "Zuk",
+                "Zu",
+                "Zuek",
+                "Margolariak"
+            ]
+        },
+        {
+            "type": "fillGaps",
+            "phrase": "Guk egunero {oheak} egiten ditugu",
+            "options": [
+                "ohea",
+                "oheak",
+                "ohe",
+                "ohei"
+            ]
+        },
+        {
+            "type": "fillGaps",
+            "phrase": "Zuek zure laguna ikusi {duzue}",
+            "options": [
+                "dituzue",
+                "dituzu",
+                "duzue",
+                "duzu"
             ]
         }
     ]
