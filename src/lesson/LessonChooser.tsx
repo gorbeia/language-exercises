@@ -1,6 +1,5 @@
 import { Button } from "grommet";
 import { useTranslation } from "react-i18next";
-import practiceData from "../data/nork-nor-orainaldia-001.json";
 
 const data = import.meta.glob("../data/*.json");
 
