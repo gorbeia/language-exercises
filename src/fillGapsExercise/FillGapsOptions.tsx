@@ -4,11 +4,11 @@ function FillGapsOptions(options: FillGapsData) {
     options.optionSelected(option);
   };
   return (
-    <>
+    <span>
       {options.options.map((o) => (
         <FillGapsOption key={o} option={o} optionSelected={() => onClick(o)} />
       ))}
-    </>
+    </span>
   );
 }
 
