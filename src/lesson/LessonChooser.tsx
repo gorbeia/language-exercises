@@ -1,11 +1,13 @@
 import { Button } from "grommet";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useAppContext } from "../AppContext";
 
 const data = import.meta.glob("../data/*.json");
 
-function LessonChooser(props: LessonChooserProps) {
+function LessonChooser() {
   const { t } = useTranslation();
+  const appContext = useAppContext();
   const [lessons, setLessons] = useState<LessonData[]>([]);
   useEffect(() => {
     const loadedLessons: LessonData[] = [];
@@ -14,8 +16,10 @@ function LessonChooser(props: LessonChooserProps) {
       promises.push(data[path]());
     }
     Promise.allSettled(promises).then((results) => {
-      for (const result of results) {
-        if (isFulfilled(result)) loadedLessons.push(result.value as LessonData);
+      for (let index = 0; index < results.length; index++) {
+        const result = results[index];
+        if (isFulfilled(result)) loadedLessons.push({ ...result.value as object, path: Object.keys(data)[index].slice(8) } as LessonData);
+
       }
       setLessons(loadedLessons);
     });
@@ -33,7 +37,7 @@ function LessonChooser(props: LessonChooserProps) {
           <Button
             key={i.name}
             label={i.name}
-            onClick={() => props.onChoose(i)}
+            onClick={() => appContext.chooseLesson(i)}
             margin="small"
           ></Button>
         );
@@ -41,10 +45,8 @@ function LessonChooser(props: LessonChooserProps) {
     </>
   );
 }
-interface LessonChooserProps {
-  onChoose: (lesson: LessonData) => void;
-}
 export interface LessonData {
+  path: string;
   name: string;
   exercises: ExerciseData[];
 }

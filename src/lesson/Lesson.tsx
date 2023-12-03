@@ -1,13 +1,18 @@
 import { useState } from "react";
 import Exercise from "../exercise/Exercise";
 import { Box, Button, Meter } from "grommet";
-import { LessonData } from "./LessonChooser";
 import LessonCloseScreen from "./LessonCloseScreen";
-function Practice(props: PracticeProps) {
+import { useAppContext } from "../AppContext";
+
+function Practice() {
+  const appContext = useAppContext();
   const [exerciseNumber, nextExercise] = useState(0);
 
   const [score, setScore] = useState({ right: 0, wrong: 0 });
-  const practiceData = props.lesson;
+  const practiceData = appContext.selectedLesson;
+  if (practiceData == undefined) {
+    throw new Error('practice data is undefined');
+  }
 
   const next = (right: boolean) => {
     if (right) {
@@ -44,14 +49,14 @@ function Practice(props: PracticeProps) {
       return (
         <>
           <Box direction="row">
-            <Button label="X" onClick={props.onClose} margin="small"></Button>
+            <Button label="X" onClick={appContext.closeLesson} margin="small"></Button>
             <Box fill>
               <Meter
                 values={[
                   {
                     value:
                       100 * (exerciseNumber / practiceData.exercises.length),
-                    onClick: () => {},
+                    onClick: () => { },
                   },
                 ]}
                 aria-label="meter"
@@ -74,16 +79,12 @@ function Practice(props: PracticeProps) {
         <LessonCloseScreen
           right={score.right}
           wrong={score.wrong}
-          closeLesson={props.onClose}
+          closeLesson={appContext.closeLesson}
           restartLesson={restartLesson}
         ></LessonCloseScreen>
       );
     }
   };
   return getComponent();
-}
-interface PracticeProps {
-  lesson: LessonData;
-  onClose: () => void;
 }
 export default Practice;
