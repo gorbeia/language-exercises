@@ -1,8 +1,10 @@
 import { Box, Button, Text } from "grommet";
 import { useTranslation } from "react-i18next";
+import { useHref } from "react-router-dom";
 
 function LessonCloseScreen(props: LessonCloseScreenProps) {
   const { t } = useTranslation();
+  const href = useHref("/");
   return (
     <Box>
       <Box>
@@ -20,7 +22,7 @@ function LessonCloseScreen(props: LessonCloseScreenProps) {
       ></Button>
       <Button
         label={t("Close")}
-        onClick={props.closeLesson}
+        href={href}
         margin="small"
       ></Button>
     </Box>
@@ -30,7 +32,6 @@ interface LessonCloseScreenProps {
   right: number;
   wrong: number;
   restartLesson: () => void;
-  closeLesson: () => void;
 }
 
 export default LessonCloseScreen;

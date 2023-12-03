@@ -2,15 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
 import './i18n';
 import './index.css'
 import LessonChooser from './lesson/LessonChooser.tsx';
-import Practice from './lesson/Lesson.tsx';
+import LessonRoute from './lesson/LessonRoute.tsx';
+import { AppContextProvider } from './AppContext.tsx';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
@@ -20,8 +21,8 @@ const router = createBrowserRouter([
         element: <LessonChooser />,
       },
       {
-        path: "/practice/:practice",
-        element: <Practice></Practice>,
+        path: "/lesson/:lessonPath",
+        element: <LessonRoute></LessonRoute>,
       },
 
     ]
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AppContextProvider>
+      <RouterProvider router={router} />
+    </AppContextProvider>
   </React.StrictMode>,
 )

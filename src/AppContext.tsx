@@ -1,27 +1,22 @@
-import { createContext, useContext, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useContext, useState } from "react";
 import { LessonData } from "./lesson/LessonChooser";
-import { useNavigate } from "react-router-dom";
 
 const AppContext = createContext<AppContextInterface | undefined>(undefined);
 
 
 export function AppContextProvider({ children }: { children: JSX.Element | JSX.Element[] }) {
 
-  const navigate = useNavigate();
     const [appContext, setAppContext] = useState<AppContextData>({});
+    const [lessons, setLessons] = useState<LessonData[]>([]);
 
-    const closeLesson = () => {
-        setAppContext(() => { return {} });
-        navigate(`/`)
-    }
-    const chooseLesson = (lesson: LessonData) => {
+    const chooseLessonByPath = (path: string): void => {
+        const lesson = lessons?.find((l) => l.path === path);
+        if (appContext.selectedLesson?.path != lesson?.path)
         setAppContext(() => { return { selectedLesson: lesson } });
-        navigate(`/practice/${lesson.path}`)
     }
-
 
     return (
-        <AppContext.Provider value={{ ...appContext, chooseLesson, closeLesson }}>
+        <AppContext.Provider value={{ ...appContext, lessons, setLessons, chooseLessonByPath }}>
             {children}
         </AppContext.Provider>
     );
@@ -37,9 +32,10 @@ export function useAppContext(): AppContextInterface {
 
 export interface AppContextData {
     selectedLesson?: LessonData;
+    lessons?: LessonData[];
 }
 
 export interface AppContextInterface extends AppContextData {
-    chooseLesson: (lesson: LessonData) => void;
-    closeLesson: () => void;
+    setLessons: Dispatch<SetStateAction<LessonData[]>>;
+    chooseLessonByPath(path: string): void;
 }

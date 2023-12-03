@@ -3,8 +3,10 @@ import Exercise from "../exercise/Exercise";
 import { Box, Button, Meter } from "grommet";
 import LessonCloseScreen from "./LessonCloseScreen";
 import { useAppContext } from "../AppContext";
+import { useHref } from "react-router-dom";
 
 function Practice() {
+  const href = useHref("/");
   const appContext = useAppContext();
   const [exerciseNumber, nextExercise] = useState(0);
 
@@ -49,7 +51,7 @@ function Practice() {
       return (
         <>
           <Box direction="row">
-            <Button label="X" onClick={appContext.closeLesson} margin="small"></Button>
+            <Button label="X" href={href} margin="small"></Button>
             <Box fill>
               <Meter
                 values={[
@@ -79,7 +81,6 @@ function Practice() {
         <LessonCloseScreen
           right={score.right}
           wrong={score.wrong}
-          closeLesson={appContext.closeLesson}
           restartLesson={restartLesson}
         ></LessonCloseScreen>
       );

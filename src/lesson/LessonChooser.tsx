@@ -1,14 +1,15 @@
 import { Button } from "grommet";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppContext } from "../AppContext";
+import { useNavigate } from "react-router-dom";
 
 const data = import.meta.glob("../data/*.json");
 
 function LessonChooser() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const appContext = useAppContext();
-  const [lessons, setLessons] = useState<LessonData[]>([]);
   useEffect(() => {
     const loadedLessons: LessonData[] = [];
     const promises = [];
@@ -21,7 +22,7 @@ function LessonChooser() {
         if (isFulfilled(result)) loadedLessons.push({ ...result.value as object, path: Object.keys(data)[index].slice(8) } as LessonData);
 
       }
-      setLessons(loadedLessons);
+      appContext.setLessons(loadedLessons);
     });
   }, []);
   function isFulfilled<T>(
@@ -32,12 +33,12 @@ function LessonChooser() {
   return (
     <>
       <h1>{t("Choose a lesson")}</h1>
-      {lessons.map((i) => {
+      {appContext.lessons?.map((i) => {
         return (
           <Button
             key={i.name}
             label={i.name}
-            onClick={() => appContext.chooseLesson(i)}
+            onClick={()=> navigate("/lesson/" + i.path)}
             margin="small"
           ></Button>
         );
