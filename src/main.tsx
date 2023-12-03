@@ -8,8 +8,8 @@ import {
 import './i18n';
 import './index.css'
 import LessonChooser from './lesson/LessonChooser.tsx';
-import LessonRoute from './lesson/LessonRoute.tsx';
 import { AppContextProvider } from './AppContext.tsx';
+import LessonContextContainer from './lesson/LessonContextContainer.tsx';
 
 const router = createHashRouter([
   {
@@ -22,7 +22,7 @@ const router = createHashRouter([
       },
       {
         path: "/lesson/:lessonPath",
-        element: <LessonRoute></LessonRoute>,
+        element: <LessonContextContainer></LessonContextContainer>,
       },
 
     ]

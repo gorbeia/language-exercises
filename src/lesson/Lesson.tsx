@@ -2,18 +2,18 @@ import { useState } from "react";
 import Exercise from "../exercise/Exercise";
 import { Box, Button, Meter } from "grommet";
 import LessonCloseScreen from "./LessonCloseScreen";
-import { useAppContext } from "../AppContext";
 import { useHref } from "react-router-dom";
+import { useLessonContext } from "./LessonContext";
 
 function Practice() {
   const href = useHref("/");
-  const appContext = useAppContext();
+  const lessonContext = useLessonContext();
   const [exerciseNumber, nextExercise] = useState(0);
 
   const [score, setScore] = useState({ right: 0, wrong: 0 });
-  const practiceData = appContext.selectedLesson;
+  const practiceData = lessonContext.lesson;
   if (practiceData == undefined) {
-    throw new Error('practice data is undefined');
+    return(<div>Loading</div>)
   }
 
   const next = (right: boolean) => {
