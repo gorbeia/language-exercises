@@ -1,10 +1,7 @@
 TODO
 
-* main page / lesson selector
-  * dynamic 
 * scoreboard
 * show right solution
-* disable exercise after check
 * repeat failed lessons
    * mark failed lessons 
 * style
@@ -19,3 +16,6 @@ Done
 * i18n
 * finish lesson
 * exit lesson
+* disable exercise after check
+* main page / lesson selector
+  * dynamic 
