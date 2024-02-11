@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './i18n';
 import './index.css'
-import LessonChooser from './lesson/LessonChooser.tsx';
+import LessonChooser from './lesson/chooser/LessonChooser.tsx';
 import { AppContextProvider } from './AppContext.tsx';
 import LessonContextContainer from './lesson/LessonContextContainer.tsx';
 

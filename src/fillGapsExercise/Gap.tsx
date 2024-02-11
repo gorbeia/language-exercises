@@ -1,12 +1,11 @@
-import { Button } from "grommet";
+import { StyledFillGapsOption } from "./StyledFillGapsOption";
 
 function Gap(props: GapData) {
   if (isString(props.option)) {
     return (
-      <Button
-        label={props.option}
+      <StyledFillGapsOption
         onClick={() => props.optionClicked(props.option as string)}
-      ></Button>
+      >{props.option}</StyledFillGapsOption>
     );
   } else {
     return <>____</>;

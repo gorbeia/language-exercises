@@ -1,12 +1,10 @@
 import { useState } from "react";
 import Exercise from "../exercise/Exercise";
-import { Box, Button, Meter } from "grommet";
 import LessonCloseScreen from "./LessonCloseScreen";
-import { useHref } from "react-router-dom";
 import { useLessonContext } from "./LessonContext";
+import LessonHeader from "./LessonHeader";
 
 function Practice() {
-  const href = useHref("/");
   const lessonContext = useLessonContext();
   const [exerciseNumber, nextExercise] = useState(0);
 
@@ -40,35 +38,14 @@ function Practice() {
     setScore({ right: 0, wrong: 0 });
     nextExercise(0);
   };
-  const redStyle = {
-    color: "red",
-  };
-  const greenStyle = {
-    color: "green",
-  };
+
   const getComponent = () => {
     if (exerciseNumber >= 0) {
       return (
         <>
-          <Box direction="row">
-            <Button label="X" href={href} margin="small"></Button>
-            <Box fill>
-              <Meter
-                values={[
-                  {
-                    value:
-                      100 * (exerciseNumber / practiceData.exercises.length),
-                    onClick: () => { },
-                  },
-                ]}
-                aria-label="meter"
-              />
-            </Box>
-            <div>
-              <span style={greenStyle}>{score.right}</span>/
-              <span style={redStyle}>{score.wrong}</span>
-            </div>
-          </Box>
+          <div>
+            <LessonHeader score={score} exerciseNumber={exerciseNumber}></LessonHeader>
+          </div>
           <Exercise
             key={exerciseNumber}
             {...practiceData.exercises[exerciseNumber]}

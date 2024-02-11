@@ -1,15 +1,11 @@
-import { Button, Footer } from "grommet";
 import FillGapsExercise, {
   FillGapsExerciseData,
 } from "../fillGapsExercise/FillGapsExercise";
 import { useState } from "react";
-import ExerciseResult from "./ExerciseResult";
-import { useTranslation } from "react-i18next";
+import ExerciseCheck from "./ExerciseCheck";
 
 function Exercise(props: ExerciseProps) {
-  const { t } = useTranslation();
   const [buttonDisabled, setDisabled] = useState(true);
-  const [status, setStatus] = useState<"empty" | "valid" | "invalid">("empty");
   const [valid, setValid] = useState(false);
   const [locked, setLocked] = useState(false);
 
@@ -23,14 +19,6 @@ function Exercise(props: ExerciseProps) {
     },
     locked,
   };
-  function checkValid() {
-    setLocked(true);
-    if (valid) {
-      setStatus("valid");
-    } else {
-      setStatus("invalid");
-    }
-  }
   function getComponent(nestedProps: ExerciseProps) {
     if (isFillGapsExercise(nestedProps)) {
       return <FillGapsExercise {...nestedProps}></FillGapsExercise>;
@@ -38,38 +26,12 @@ function Exercise(props: ExerciseProps) {
       return "e";
     }
   }
-  function getBackground() {
-    return valid == true ? "neutral-1" : "status-error";
-  }
-  function getButton() {
-    if (status === "empty") {
-      return (
-        <Button
-          label={t("Check")}
-          size="large"
-          disabled={buttonDisabled}
-          onClick={checkValid}
-        ></Button>
-      );
-    } else {
-      return (
-        <Footer direction="column" background={getBackground()} pad="small">
-          <ExerciseResult status={status}></ExerciseResult>
-          <Button
-            label={t("Continue")}
-            size="large"
-            onClick={() => props.continue(valid)}
-          ></Button>
-        </Footer>
-      );
-    }
-  }
 
   return (
     <>
       {" "}
       {getComponent(nestedProps)}
-      {getButton()}
+      <ExerciseCheck disabled={buttonDisabled} valid={valid} continue={props.continue} setLocked={setLocked}></ExerciseCheck>
     </>
   );
 }

@@ -1,4 +1,5 @@
-import { Button } from "grommet";
+import { StyledFillGapsOption } from "./StyledFillGapsOption";
+
 function FillGapsOption(options: FillGapsData) {
   const onClick = (event: { stopPropagation: () => void; }) => {
     options.optionSelected(options.option);
@@ -6,7 +7,7 @@ function FillGapsOption(options: FillGapsData) {
   };
   return (
     <>
-      <Button label={options.option} margin={"small"} onClick={onClick} />
+      <StyledFillGapsOption  onClick={onClick} >{options.option}</StyledFillGapsOption>
     </>
   );
 }

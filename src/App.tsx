@@ -1,10 +1,8 @@
-import { Box, Grommet } from 'grommet'
-import { grommet } from "grommet";
-import './App.css'
 import { Outlet } from 'react-router-dom';
 import { useAppContext } from './AppContext';
 import { useEffect } from 'react';
-import { LessonData } from './lesson/LessonChooser';
+import { LessonData } from './lesson/chooser/LessonChooser';
+import { StyledApp } from './StyledApp';
 const data = import.meta.glob("./data/*.json");
 
 function App() {
@@ -18,7 +16,7 @@ function App() {
     Promise.allSettled(promises).then((results) => {
       for (let index = 0; index < results.length; index++) {
         const result = results[index];
-        if (isFulfilled(result)) loadedLessons.push({ ...result.value as object, path: Object.keys(data)[index].slice(8) } as LessonData);
+        if (isFulfilled(result)) loadedLessons.push({ ...result.value as object, path: Object.keys(data)[index].slice(7) } as LessonData);
 
       }
       appContext.setLessons(loadedLessons);
@@ -31,11 +29,9 @@ function App() {
   }
 
   return (
-      <Grommet full theme={grommet}>
-        <Box pad="small" fill>
+      <StyledApp>
           <Outlet></Outlet>
-        </Box>
-      </Grommet>
+      </StyledApp>
   )
 }
 

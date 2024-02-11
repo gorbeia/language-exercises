@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, createContext, useContext, useState } from "react";
-import { LessonData } from "./LessonChooser";
+import { LessonData } from "./chooser/LessonChooser";
+import { StyledLesson } from "./StyledLesson";
 const LessonContext = createContext<LessonContextInterface | undefined>(undefined);
 
 
@@ -15,7 +16,9 @@ export function LessonContextProvider({ children }: { children: JSX.Element | JS
 
     return (
         <LessonContext.Provider value={{ lesson, setLesson, chooseLessonByPath }}>
+            <StyledLesson>
             {children}
+            </StyledLesson>
         </LessonContext.Provider>
     );
 }

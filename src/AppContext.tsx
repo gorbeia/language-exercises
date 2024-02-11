@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, createContext, useContext, useState } from "react";
-import { LessonData } from "./lesson/LessonChooser";
+import { LessonData } from "./lesson/chooser/LessonChooser";
 
 const AppContext = createContext<AppContextInterface | undefined>(undefined);
 
