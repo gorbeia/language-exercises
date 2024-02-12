@@ -5,7 +5,9 @@ function Phrase(props: PhraseProps) {
     <p>
       {props.segments.map((segment) => {
         if (typeof segment == "string") {
-          return segment;
+          return (
+            <span style={{lineHeight: "55px"}}>{segment}</span>
+          );
         } else {
           return (
             <Gap
