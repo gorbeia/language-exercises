@@ -7,7 +7,6 @@ function ExerciseCheck(props: ExerciseCheckProps) {
   const { t } = useTranslation();
   const [status, setStatus] = useState<"empty" | "valid" | "invalid">("empty");
 
-
   function checkValid() {
     props.setLocked(true);
     if (props.valid) {
@@ -22,18 +21,18 @@ function ExerciseCheck(props: ExerciseCheckProps) {
   function getButton() {
     if (status === "empty") {
       return (
-        <div style={{width: "100%", marginTop: "auto", padding: "20px"}}>
-        <Button
-          label={t("Check")}
-          size="large"
-          disabled={props.disabled}
-          onClick={checkValid}
-        ></Button>
+        <div style={{ width: "100%", marginTop: "auto", textAlign: "center", padding: "20px" }}>
+          <Button
+            label={t("Check")}
+            size="large"
+            disabled={props.disabled}
+            onClick={checkValid}
+          ></Button>
         </div>
       );
     } else {
       return (
-        <div style={{width: "100%", marginTop: "auto"}}>
+        <div style={{ width: "100%", marginTop: "auto" }}>
           <Footer direction="column" background={getBackground()} pad="small">
             <ExerciseResult status={status}></ExerciseResult>
             <Button
@@ -44,14 +43,14 @@ function ExerciseCheck(props: ExerciseCheckProps) {
           </Footer>
         </div >
       );
+    }
   }
-}
 
-return (
-  <>
-    {getButton()}
-  </>
-);
+  return (
+    <>
+      {getButton()}
+    </>
+  );
 }
 
 export interface ExerciseCheckProps {
