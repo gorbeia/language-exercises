@@ -1,4 +1,3 @@
-import { Button } from "grommet";
 import { useHref } from "react-router-dom";
 import { useLessonContext } from "./LessonContext";
 import { StyledLessonHeader } from "./StyledLessonHeader";
@@ -23,7 +22,7 @@ function LessonHeader(props: LessonHeaderProps) {
 
   return (
     <StyledLessonHeader>
-      <Button label="X" href={href} margin="small"></Button>
+      <a style={{padding: "4px", textDecoration: "none", fontSize: "150%"}} href={href}>&#10006;</a>
         <Meter
           percent={100 * (props.exerciseNumber / practiceData.exercises.length)}
           aria-label="meter"
