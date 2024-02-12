@@ -2,7 +2,6 @@ import { useState } from "react";
 import FillGapsOptions from "./FillGapsOptions";
 import Phrase from "./Phrase";
 import { NestedExerciseProps, ExerciseProps } from "../exercise/Exercise";
-import { Box } from "grommet";
 import { useTranslation } from "react-i18next";
 
 function FillGapsExercise(exercise: FillGapsExerciseData) {
@@ -66,19 +65,19 @@ function FillGapsExercise(exercise: FillGapsExerciseData) {
   return (
     <>
       <h2>{t('Fill the gaps')}</h2>
-      <Box>
+      <div>
         <Phrase
           segments={segments}
           selectedOptions={selectedOptions}
           optionClicked={optionClicked}
         ></Phrase>
-      </Box>
-      <Box direction="row">
+      </div>
+      <div>
         <FillGapsOptions
           options={remainingOptions}
           optionSelected={optionSelectedCallback}
         ></FillGapsOptions>
-      </Box>
+      </div>
     </>
   );
 }
