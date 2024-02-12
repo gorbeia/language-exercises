@@ -8,7 +8,7 @@ function Gap(props: GapData) {
       >{props.option}</StyledFillGapsOption>
     );
   } else {
-    return <>____</>;
+    return <>________</>;
   }
 }
 function isString(s: string | undefined): s is string {

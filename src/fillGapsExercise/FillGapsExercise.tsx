@@ -72,12 +72,10 @@ function FillGapsExercise(exercise: FillGapsExerciseData) {
           optionClicked={optionClicked}
         ></Phrase>
       </div>
-      <div>
         <FillGapsOptions
           options={remainingOptions}
           optionSelected={optionSelectedCallback}
         ></FillGapsOptions>
-      </div>
     </>
   );
 }

@@ -4,11 +4,13 @@ function FillGapsOptions(options: FillGapsData) {
     options.optionSelected(option);
   };
   return (
-    <span>
+    <div style={{display: "flex"}}>
       {options.options.map((o) => (
+        <div style={{padding: "10px"}}>
         <FillGapsOption key={o} option={o} optionSelected={() => onClick(o)} />
+        </div>
       ))}
-    </span>
+    </div>
   );
 }
 
@@ -17,3 +19,4 @@ interface FillGapsData {
   optionSelected: (option: string) => void;
 }
 export default FillGapsOptions;
+ 
