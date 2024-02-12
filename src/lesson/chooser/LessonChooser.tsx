@@ -13,7 +13,7 @@ function LessonChooser() {
       <h1>{t("Choose a lesson")}</h1>
       {appContext.lessons?.map((i) => {
         return (
-          <div>
+          <div key={i.name}>
           <Button
             key={i.name}
             label={i.name}
