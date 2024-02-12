@@ -1,9 +1,8 @@
-import { Paragraph } from "grommet";
 import Gap from "./Gap";
 
 function Phrase(props: PhraseProps) {
   return (
-    <Paragraph>
+    <p>
       {props.segments.map((segment) => {
         if (typeof segment == "string") {
           return segment;
@@ -17,7 +16,7 @@ function Phrase(props: PhraseProps) {
           );
         }
       })}
-    </Paragraph>
+    </p>
   );
 }
 
