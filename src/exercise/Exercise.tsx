@@ -3,6 +3,7 @@ import FillGapsExercise, {
 } from "../fillGapsExercise/FillGapsExercise";
 import { useState } from "react";
 import ExerciseCheck from "./ExerciseCheck";
+import { StyledExercise } from "./StyledExercise";
 
 function Exercise(props: ExerciseProps) {
   const [buttonDisabled, setDisabled] = useState(true);
@@ -28,11 +29,10 @@ function Exercise(props: ExerciseProps) {
   }
 
   return (
-    <>
-      {" "}
+    <StyledExercise>
       {getComponent(nestedProps)}
       <ExerciseCheck disabled={buttonDisabled} valid={valid} continue={props.continue} setLocked={setLocked}></ExerciseCheck>
-    </>
+    </StyledExercise>
   );
 }
 

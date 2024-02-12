@@ -22,32 +22,36 @@ function ExerciseCheck(props: ExerciseCheckProps) {
   function getButton() {
     if (status === "empty") {
       return (
+        <div style={{width: "100%", marginTop: "auto", padding: "20px"}}>
         <Button
           label={t("Check")}
           size="large"
           disabled={props.disabled}
           onClick={checkValid}
         ></Button>
+        </div>
       );
     } else {
       return (
-        <Footer direction="column" background={getBackground()} pad="small">
-          <ExerciseResult status={status}></ExerciseResult>
-          <Button
-            label={t("Continue")}
-            size="large"
-            onClick={() => props.continue(props.valid)}
-          ></Button>
-        </Footer>
+        <div style={{width: "100%", marginTop: "auto"}}>
+          <Footer direction="column" background={getBackground()} pad="small">
+            <ExerciseResult status={status}></ExerciseResult>
+            <Button
+              label={t("Continue")}
+              size="large"
+              onClick={() => props.continue(props.valid)}
+            ></Button>
+          </Footer>
+        </div >
       );
-    }
   }
+}
 
-  return (
-    <>
-      {getButton()}
-    </>
-  );
+return (
+  <>
+    {getButton()}
+  </>
+);
 }
 
 export interface ExerciseCheckProps {
